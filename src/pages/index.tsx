@@ -14,7 +14,7 @@ interface HomeProps{
         id: number;
         name: string;
         imageUrl: string;
-        price: number;
+        price: string;
     }[]
 }
 
@@ -39,7 +39,7 @@ export default function Home({products}: HomeProps) {
                             <Image src={p.imageUrl} alt={`Imagem camiseta: ${p.name}`} width={520} height={480}/>
                             <footer>
                                 <strong>{p.name}</strong>
-                                <span>{p.price.toLocaleString("pt-BR", {style: "currency", currency:"BRL"})}</span>
+                                <span>{p.price}</span>
                             </footer>
                         </Product>
                     );
@@ -58,7 +58,7 @@ export const getStaticProps: GetStaticProps = async () => {
             id: product.id,
             name: product.name,
             imageUrl: product.images[0],
-            price: price.unit_amount / 100
+            price: new Intl.NumberFormat("pt-BR",{style: "currency", currency: "BRL"}).format(price.unit_amount / 100)
         };
     });
 
