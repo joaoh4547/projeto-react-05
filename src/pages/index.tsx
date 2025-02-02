@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { styled } from "../styles";
 
 const Button = styled("button",{
@@ -20,6 +21,9 @@ const Button = styled("button",{
 export default function Home() {
     return (
         <>
+            <Head>
+                <title>Ignite Shop</title>
+            </Head>
             <Button>
             Enviar 
                 <span>teste</span>
