@@ -9,6 +9,7 @@ import { stripe } from "../../lib/stripe";
 import Stripe from "stripe";
 import Image from "next/future/image";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { useRouter } from "next/router";
 
 interface ProductProps{
     product:{
@@ -22,6 +23,13 @@ interface ProductProps{
 
 
 export default function Product({product}: ProductProps){
+
+    const {isFallback} = useRouter();
+
+    if(isFallback){
+        return <h1>Carregando...</h1>;
+    }
+
     return (
         <>
             <Head>
@@ -54,7 +62,7 @@ export const getStaticPaths : GetStaticPaths = async () =>{
                 }
             }
         ],
-        fallback: false
+        fallback: true
     };
 };
 
