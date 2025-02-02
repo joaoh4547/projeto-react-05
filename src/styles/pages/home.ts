@@ -34,11 +34,10 @@ export const Product = styled("a",{
         backgroundColor: "rgba(0,0,0,0.6)",
         transform: "translateY(110%)",
         transition: "all 0.2s ease-in-out",
-        // transformOrigin: "top",
         opacity: 0,
         strong:{
             fontSize: "$lg",
-            color: "$white",
+            color: "$gray100",
         },
 
         span:{
