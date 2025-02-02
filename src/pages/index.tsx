@@ -36,7 +36,7 @@ const camisetas: Record<number, Product> = {
 
 console.log();
 
-export default function Home() {
+export default function Home(props) {
 
     const [sliderRef]  = useKeenSlider({slides: {
         perView: 2.25,
@@ -49,6 +49,9 @@ export default function Home() {
                 <title>Ignite Shop</title>
             </Head>
             <HomeContainer ref={sliderRef} className="keen-slider">
+                <pre>
+                    {JSON.stringify(props)}
+                </pre>
                 {Array.from({length: Object.entries(camisetas).length}).map((_, i) =>{
                     return (
                         <Product key={i} href={`product/${i+1}`} className="keen-slider__slide">
@@ -64,3 +67,12 @@ export default function Home() {
         </>
     );
 }
+
+export const getServerSideProps = () =>{
+    console.log("getServerSideProps");
+    return {
+        props: {
+            list: [1,2,3]
+        }
+    };
+};
