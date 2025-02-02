@@ -2,7 +2,7 @@ import { styled } from "../styles";
 
 const Button = styled("button",{
     display: "flex",
-    backgroundColor: "$color",
+    backgroundColor: "$green500",
     borderRadius: 8,
     border: 0,
     padding: "4px 8px",
@@ -19,11 +19,12 @@ const Button = styled("button",{
 
 export default function Home() {
     return (
-
-        <Button>
+        <>
+            <Button>
             Enviar 
-            <span>teste</span>
-        </Button>
-    
+                <span>teste</span>
+            </Button>
+            <h1>teste</h1>
+        </>
     );
 }
