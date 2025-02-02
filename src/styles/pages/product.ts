@@ -8,7 +8,7 @@ export const ProductContainer = styled("main",{
     maxWidth: 1180,
     margin: "0 auto",
     padding: "4rem",
-    "@media (max-width: 1000px)":{
+    "@media (max-width: 1200px)":{
         gridTemplateColumns: "1fr"
     }
 });
@@ -27,9 +27,9 @@ export const ImageContainer = styled("div",{
     img:{
         objectFit: "cover"
     }  ,
-    "@media (max-width: 1000px)":{
-        height: 356,
-        maxWidth: 776,
+    "@media (max-width: 1200px)":{
+        height: 456,
+        maxWidth: 976,
     }
 });
 
