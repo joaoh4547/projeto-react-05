@@ -1,22 +1,37 @@
 import Head from "next/head";
-import { styled } from "../styles";
+import { HomeContainer, Product } from "../styles/pages/home";
+import Image, { StaticImageData } from "next/future/image";
+import image1 from "../assets/camisetas/1.png";
+import image2 from "../assets/camisetas/2.png";
+// import image3 from "../assets/camisetas/3.png";
+// import image4 from "../assets/camisetas/4.png";
 
-const Button = styled("button",{
-    display: "flex",
-    backgroundColor: "$green500",
-    borderRadius: 8,
-    border: 0,
-    padding: "4px 8px",
-    span:{
-        fontWeight: "bold"
+
+interface Product{
+    image: StaticImageData,
+    price: number
+}
+
+const camisetas: Record<number, Product> = {
+    1: {
+        image: image1,
+        price: 19.99,
     },
-    transition: "0.2s",
-    gap: 5,
-    "&:hover":{
-        filter: "brightness(0.8)"
-    }
+    2: {
+        image: image2,
+        price: 24.99,
+    },
+    // 3: {
+    //     image: image3,
+    //     price: 17.99,
+    // },
+    // 4: {
+    //     image: image4,
+    //     price: 22.99,
+    // },
+};
 
-});
+console.log();
 
 export default function Home() {
     return (
@@ -24,11 +39,19 @@ export default function Home() {
             <Head>
                 <title>Ignite Shop</title>
             </Head>
-            <Button>
-            Enviar 
-                <span>teste</span>
-            </Button>
-            <h1>teste</h1>
+            <HomeContainer>
+                {Array.from({length: Object.entries(camisetas).length}).map((_, i) =>{
+                    return (
+                        <Product key={i} href={`product/${i+1}`}>
+                            <Image src={camisetas[i+1].image} alt={`camiseta-${i+1}`} width={520} height={480}/>
+                            <footer>
+                                <strong>Camiseta {i+1}</strong>
+                                <span>{camisetas[i+1].price.toLocaleString("pt-BR", {style: "currency", currency:"BRL"})}</span>
+                            </footer>
+                        </Product>
+                    );
+                })}
+            </HomeContainer>
         </>
     );
 }
